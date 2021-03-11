@@ -32,9 +32,13 @@
       margin-right: auto;
     }
 
-    .swiper-slide {
-      background-size: cover;
-      background-position: center;
+    .swiper-slide div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
     }
 
     .gallery-top {
@@ -50,7 +54,10 @@
       box-sizing: border-box;
       padding: 10px 0;
     }
-
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
     .gallery-thumbs .swiper-slide {
       width: 25%;
       height: 100%;
@@ -60,6 +67,7 @@
     .gallery-thumbs .swiper-slide-thumb-active {
       opacity: 1;
     }
+    
   </style>
 </head>
 
@@ -110,48 +118,48 @@
 
     </div>
     <!-- Add Arrows -->
-    <div class="swiper-button-next swiper-button-white"></div>
-    <div class="swiper-button-prev swiper-button-white"></div>
+    <!-- <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div> -->
   </div>
   <div class="swiper-container gallery-thumbs">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/ms4cWMsOITs"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/ms4cWMsOITs"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/opSENgc45Sw"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/opSENgc45Sw"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/lz0wZiuXCoQ"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/lz0wZiuXCoQ"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/zIh1S7ra3aI"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/zIh1S7ra3aI"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/Ewhfok91AdE"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/Ewhfok91AdE"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/QgbLb6QCK88"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/QgbLb6QCK88"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/pf830yZf0x0"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/pf830yZf0x0"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/uqVx22lo9_4"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/uqVx22lo9_4"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/SyV4xez9Lp0"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/SyV4xez9Lp0"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe width="168" height="102" src="https://www.youtube.com/embed/QgbLb6QCK88"
+      <div class="swiper-slide"><div></div><iframe  src="https://www.youtube.com/embed/QgbLb6QCK88"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
@@ -163,7 +171,7 @@
     <script>
       var galleryThumbs = new Swiper('.gallery-thumbs', {
         spaceBetween: 10,
-        slidesPerView: 4,
+        slidesPerView: 5,
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
