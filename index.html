@@ -180,7 +180,7 @@
 
       function stopVideo(evt) {
         var target = evt.target;
-        if (elemHasParent(target, gallery)) {
+        if (elemHasParent(target, gallery) && !elemHasParent(target, active)) {
           console.log("opening map");
           evt.preventDefault();
   
