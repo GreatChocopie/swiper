@@ -73,6 +73,8 @@
     .gallery-thumbs .swiper-slide-thumb-active {
       opacity: 1;
     }
+
+    .current {}
   </style>
 </head>
 
@@ -170,32 +172,47 @@
       var iframe = document.querySelector(".iframe");
       var allIframes = document.getElementsByTagName("iframe");
       var iframesArray = Array.from(allIframes);
-    
+      var allPrev = document.querySelectorAll(".video");
+      var prevArray = Array.from(allPrev);
+      console.log(prevArray);
 
-      function elemHasParent(elem, needle) {
-        while (elem != null) {
-          elem = elem.parentNode;
-          if (elem == needle)
-            return true;
-        }
-        return false;
-      }
+      // function elemHasParent(elem, needle) {
+      //   while (elem != null) {
+      //     elem = elem.parentNode;
+      //     if (elem == needle)
+      //       return true;
+      //   }
+      //   return false;
+      // }
 
 
-      function stopVideo(evt) {
-        var target = evt.target;
-        if (elemHasParent(target, gallery)) {
-          console.log("opening map");
-          evt.preventDefault();
-          for (let i = 0; i < iframesArray.length; i += 1) {
+      // function stopVideo(evt) {
+      //   var target = evt.target;
+      //     evt.preventDefault();
+
+      //     for (let i = 0; i < iframesArray.length; i += 1) {
+
+      //       iframesArray[i].src = iframesArray[i].src;
+      //       gallery.removeEventListener("click", stopVideo);
+      //     }  
+      //     gallery.addEventListener("click", stopVideo);
+
+      // }
+      for (let i = 0; i < prevArray.length; i += 1) {
+        prevArray[i].addEventListener("click", function (evt) {
+          console.log(i);
+          prevArray[i].classList.toggle("current");
+          var target = evt.target;
+          if (target.classList.contains("current")) {
             
-            iframesArray[i].src = iframesArray[i].src;
-            gallery.removeEventListener("click", stopVideo);
-          }  
-          gallery.addEventListener("click", stopVideo);
-        }
+            for (let i = 0; i < iframesArray.length; i += 1) {
+              iframesArray[i].src = iframesArray[i].src;
+             
+            }
+          }
+        
+        });
       }
-      gallery.addEventListener("click", stopVideo);
     </script>
 </body>
 
