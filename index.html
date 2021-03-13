@@ -84,40 +84,40 @@
           src="https://www.youtube.com/embed/ms4cWMsOITs" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe class="iframe" width="944" height="541" src="https://www.youtube.com/embed/opSENgc45Sw"
-          frameborder="0"
+      <div class="swiper-slide"><iframe class="iframe" width="944" height="541"
+          src="https://www.youtube.com/embed/opSENgc45Sw" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe class="iframe" width="944" height="541" src="https://www.youtube.com/embed/lz0wZiuXCoQ"
-          frameborder="0"
+      <div class="swiper-slide"><iframe class="iframe" width="944" height="541"
+          src="https://www.youtube.com/embed/lz0wZiuXCoQ" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe class="iframe" width="944" height="541" src="https://www.youtube.com/embed/zIh1S7ra3aI"
-          frameborder="0"
+      <div class="swiper-slide"><iframe class="iframe" width="944" height="541"
+          src="https://www.youtube.com/embed/zIh1S7ra3aI" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe class="iframe" width="944" height="541" src="https://www.youtube.com/embed/Ewhfok91AdE"
-          frameborder="0"
+      <div class="swiper-slide"><iframe class="iframe" width="944" height="541"
+          src="https://www.youtube.com/embed/Ewhfok91AdE" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe class="iframe" width="944" height="541" src="https://www.youtube.com/embed/QgbLb6QCK88"
-          frameborder="0"
+      <div class="swiper-slide"><iframe class="iframe" width="944" height="541"
+          src="https://www.youtube.com/embed/QgbLb6QCK88" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe class="iframe" width="944" height="541" src="https://www.youtube.com/embed/pf830yZf0x0"
-          frameborder="0"
+      <div class="swiper-slide"><iframe class="iframe" width="944" height="541"
+          src="https://www.youtube.com/embed/pf830yZf0x0" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe class="iframe" width="944" height="541" src="https://www.youtube.com/embed/uqVx22lo9_4"
-          frameborder="0"
+      <div class="swiper-slide"><iframe class="iframe" width="944" height="541"
+          src="https://www.youtube.com/embed/uqVx22lo9_4" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe class="iframe" width="944" height="541" src="https://www.youtube.com/embed/SyV4xez9Lp0"
-          frameborder="0"
+      <div class="swiper-slide"><iframe class="iframe" width="944" height="541"
+          src="https://www.youtube.com/embed/SyV4xez9Lp0" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
-      <div class="swiper-slide"><iframe class="iframe" width="944" height="541" src="https://www.youtube.com/embed/QgbLb6QCK88"
-          frameborder="0"
+      <div class="swiper-slide"><iframe class="iframe" width="944" height="541"
+          src="https://www.youtube.com/embed/QgbLb6QCK88" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen></iframe></div>
 
@@ -166,8 +166,12 @@
     </script>
     <script>
       var gallery = document.querySelector(".gallery-thumbs--js");
-      var active = gallery.querySelector(".swiper-slide-thumb-active");
+      // var active = gallery.querySelector(".swiper-slide-thumb-active");
       var iframe = document.querySelector(".iframe");
+      var allIframes = document.getElementsByTagName("iframe");
+      var iframesArray = Array.from(allIframes);
+    
+
       function elemHasParent(elem, needle) {
         while (elem != null) {
           elem = elem.parentNode;
@@ -180,16 +184,18 @@
 
       function stopVideo(evt) {
         var target = evt.target;
-        if (elemHasParent(target, gallery) && !elemHasParent(target, active)) {
+        if (elemHasParent(target, gallery)) {
           console.log("opening map");
           evt.preventDefault();
-  
-          var iframeSrc = iframe.src;
-        iframe.src = iframeSrc;
-          document.removeEventListener("click", stopVideo);
+          for (let i = 0; i < iframesArray.length; i += 1) {
+            
+            iframesArray[i].src = iframesArray[i].src;
+            gallery.removeEventListener("click", stopVideo);
+          }  
+          gallery.addEventListener("click", stopVideo);
         }
       }
-      document.addEventListener("click", stopVideo);
+      gallery.addEventListener("click", stopVideo);
     </script>
 </body>
 
