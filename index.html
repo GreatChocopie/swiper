@@ -74,7 +74,7 @@
       opacity: 1;
     }
 
-   
+    .active {}
   </style>
 </head>
 
@@ -131,7 +131,8 @@
   <div class="swiper-container gallery-thumbs gallery-thumbs--js">
     <div class="swiper-wrapper">
 
-      <div class="swiper-slide"><img src="https://img.youtube.com/vi/ms4cWMsOITs/hqdefault.jpg" class="video"></div>
+      <div class="swiper-slide"><img src="https://img.youtube.com/vi/ms4cWMsOITs/hqdefault.jpg" class="video active">
+      </div>
       <div class="swiper-slide"><img src="https://img.youtube.com/vi/opSENgc45Sw/hqdefault.jpg" class="video"></div>
       <div class="swiper-slide"><img src="https://img.youtube.com/vi/lz0wZiuXCoQ/hqdefault.jpg" class="video"></div>
       <div class="swiper-slide"><img src="https://img.youtube.com/vi/zIh1S7ra3aI/hqdefault.jpg" class="video"></div>
@@ -168,42 +169,36 @@
     </script>
     <script>
       var gallery = document.querySelector(".gallery-thumbs--js");
-      // var active = gallery.querySelector(".swiper-slide-thumb-active");
       var iframe = document.querySelector(".iframe");
       var allIframes = document.getElementsByTagName("iframe");
       var iframesArray = Array.from(allIframes);
       var allPrev = document.querySelectorAll(".video");
       var prevArray = Array.from(allPrev);
-      console.log(prevArray);
-
-      // function elemHasParent(elem, needle) {
-      //   while (elem != null) {
-      //     elem = elem.parentNode;
-      //     if (elem == needle)
-      //       return true;
-      //   }
-      //   return false;
-      // }
+      var lastClicked = prevArray[0];
 
 
-      function stopVideo(evt) {
-    
-       
-    
-          for (let i = 0; i < iframesArray.length; i += 1) {
 
-            iframesArray[i].src = iframesArray[i].src;
-          } 
-          
-        
-      }
-      
+
       for (let i = 0; i < prevArray.length; i += 1) {
-     
-        prevArray[i].addEventListener("click", stopVideo);
-        
-       
-      
+
+        prevArray[i].addEventListener("click", function stopVideo() {
+          lastClicked.classList.remove('active');
+          this.classList.add('active');
+          lastClicked = this;
+          if (prevArray[i].classList.contains("active")) {
+            for (let i = 0; i < iframesArray.length; i += 1) {
+
+              iframesArray[i].src = iframesArray[i].src;
+              
+            }
+            prevArray[i].removeEventListener("click", stopVideo);
+           
+
+          }
+        });
+
+
+
       }
     </script>
 </body>
