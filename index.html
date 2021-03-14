@@ -182,7 +182,7 @@
       for (let i = 0; i < prevArray.length; i += 1) {
 
         prevArray[i].addEventListener("click", function stopVideo() {
-          lastClicked.classList.remove('active');
+          lastClicked.classList.toggle('active');
           this.classList.add('active');
           lastClicked = this;
           if (prevArray[i].classList.contains("active")) {
