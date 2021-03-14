@@ -74,7 +74,7 @@
       opacity: 1;
     }
 
-    .current {}
+   
   </style>
 </head>
 
@@ -186,32 +186,24 @@
       // }
 
 
-      // function stopVideo(evt) {
-      //   var target = evt.target;
-      //     evt.preventDefault();
+      function stopVideo(evt) {
+    
+       
+    
+          for (let i = 0; i < iframesArray.length; i += 1) {
 
-      //     for (let i = 0; i < iframesArray.length; i += 1) {
-
-      //       iframesArray[i].src = iframesArray[i].src;
-      //       gallery.removeEventListener("click", stopVideo);
-      //     }  
-      //     gallery.addEventListener("click", stopVideo);
-
-      // }
-      for (let i = 0; i < prevArray.length; i += 1) {
-        prevArray[i].addEventListener("click", function (evt) {
-          console.log(i);
-          prevArray[i].classList.toggle("current");
-          var target = evt.target;
-          if (target.classList.contains("current")) {
-            
-            for (let i = 0; i < iframesArray.length; i += 1) {
-              iframesArray[i].src = iframesArray[i].src;
-             
-            }
-          }
+            iframesArray[i].src = iframesArray[i].src;
+          } 
+          
         
-        });
+      }
+      
+      for (let i = 0; i < prevArray.length; i += 1) {
+     
+        prevArray[i].addEventListener("click", stopVideo);
+        
+       
+      
       }
     </script>
 </body>
